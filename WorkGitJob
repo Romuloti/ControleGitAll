@@ -1,0 +1,165 @@
+<?php
+// GitHub    Versionamento semântico  ....:::: Recomendado nunca alterar a MASTER ::::....
+    X.Y.Z                Z = Correção de Bug
+                         Y = Nova Funcionalidade
+                         X = Muda muito a ponto de quebrar a compatilibidade com a versão anterior/master
+                         
+/* ===========################     Criar tag    ########################========================*/
+            1. git tag -a 0.0.1 -m "Comentário"                // Criar uma etiqueta "tag"
+            2. git push origin master --tags                   // Enviar para o dashboard
+                2.1 git commit -a -m "Comentário"              // Feito atualização no documento
+            3. git push origin master                          // Encaminhar para o github - repositório on-line
+                3.1 git tag -a 1.0.0 -m "Novo comentário"
+            4. git tag                                          // Mostra tags
+            
+//=================.....::::::    GitLab   :::::::.............=========================
+    1. Commit no Git
+    2. Cria tag com base na Branch Master
+    3. Cria Branch com base na Tag Criada
+    4. Abre chamado solicitando publicação da branch criado
+            5. git status
+            6. git add .
+            7. git commit -m "Comentário"       7.1 gi commit -a -m "Comentário"  // Pula o git add .
+            8. git push origin master
+            
+//====================<<<<<<<<    GITHUB   >>>>>>>>>>>=============  Branch = Ramo ou Filial / Primeiro criar Tag 0_0_1  
+    Criar nova branch para colocar as atualizações sem alterar a Branch Master
+        1. git checkout -b v0.0.1                 // Criar nova branch nome da branchv0.0.1
+        2. git status                             // Verifica as mudanças no arquivo
+        3. git add .                              // Coloca todas as alterações para dentro do repositório
+        4. git commit -m "Comentário do commit"   // Enviar, fazer upload dos códigos para o banco do git
+        5. git push origin v0.0.1                 // Enviar o conteúdo do repositório local para o repositório remoto : colocar as credências do git
+                        //git push -u origin v0.0.1
+                        //git push --set-upstream origin master
+                        //git push --set-upstream --force origin master
+                        
+                Caso queira atualizar a branch master da última alteração  
+                    1. git checkout master                                 // Mudar de branch e ir para a master
+                    2. git merge v0.0.1                                    // Atualizar o branch master da branch que foi criada da versão v0.0.1 - local
+                    3. git add .                                           // Add alterações para dentro do repositório stage area
+                    4. git commit -m "Commit update versão branch master"  // Enviar uploads para o repositório
+                    5. git push origin master                              // Colocando arquivos no branch principal, colocar credências do git("autenticação")
+                    
+/* =====Trabalhar em um Projeto já existente========*/
+        1. $ Pegar a URL do Projeto no GiHub dashboard "Painel Web"
+        2. $ git clone https://github.com/Romuloti/Projeto.git nome_da_pasta_nova_p_clonar
+        3. $ git status                  // Verificar em qual branch eu estou
+        4. $ git branch nome_branch      // Criar uma nova branch
+        5. $ git checkout nome_branch    // Mudar de pasta
+        6. $ git status                  // Verificar situação
+        7. $ git add .                   // Adicionar no stage area
+        8. $ git commit -m "Código corrigido"
+        9. $ git status
+        10. $ git push origin nome_branch // Qual branch eu estou partindo, Enviar para o repositório 
+        11. $ Clicar no botão Newpull Request  // Solicitando a revisão vá até ao Painel do git na WEB      
+        
+/* ===Configuração inicial básica ============*/                       
+        1. $ git config --global user.name "Romulo de Oliveira Azevedo"
+        2. $ git config --global user.email romuloazevedobr@gmail.com
+        3. $ git config --global core.editor 'code --wait'   // $ code .  
+        4. $ git config --list // Lista todo conteúdo do git
+        5. $ git --version
+        
+            //acessar a pasta do projeto
+                    6. $ git init
+                    7. $ git status     // Verificação se foi criado arquivo ou atualizado
+                    8. $ git add .      // add nome_do_arquivo Passando para a área de espera " stage area "
+                    9. $ git status
+                    10. $ git commit -m "Commit inicial"
+                                    11. $ (".gitigonore")       //0.0.1colocar o próprio arquivo. Criar arquivo .gitignore  obs"/ " é diretório"
+                                        12. $ git diff          //Saber o que foi alterado no diretório e trabalho "Workdirectory"
+                                        13. $ git add .         // Sai da workdirectory e vai para a stage area  
+                                        14. $ git log           // Apresenta a chave do commit e dados de autor
+                                     // 15. $ git log -p        // Igual 14. com o diff suas alterações, juntando tudo ("É pouco utilizado") Pressionar letra q
+                                     // 16. $ git log -p -3     // 3 últimos commits
+                                        17. $ gitk              // Abre painel do GIT
+                                        18. $ git log --pretty=online  // Mostrar o código de cada commit
+                                        
+    //Juntar atualização no commit anterior, Voltar backup do arquivo
+        19. $ git add .
+        20. $ git commit --amend -m "Novas funcionalidades (edicao)" 
+
+        21. $ git reset HEAD arquivo.php             //Remover arquivo da stage area         
+        22. $ git checkout -- arquivo.php            //Descartar as mudanças do arquivo, voltar ao estado original do arquivo
+        23. $ git rm arquivo.php                     // Remover arquivo do diretório
+        
+// ==========....:::::::      Tags  - etiqueta, atalho     :::::.......... ===============================
+                    24. $ git tag -a v1_0_0 -m "Versão da tag comentário" // Criar tag
+                    25. $ git tag                                         // Lista tag
+                    26. $ git tag -a v0.0 key -m "versao 0.0"             // Criar uma tag baseado em uma determinada chave
+                    27. $ git show v0.0                                   // Mostrar relatório de tag
+                    28. $ git checkout v0.0                               // Verificar o que tem no commit da tagNome
+                    29. $ git
+                    
+// ==========....:::::::      branch  :::::::............ ===============================
+                        30. $ git branch teste
+                        31. $ git checkout teste
+                                    32. git checkout -b nome_arquivo      //Criar branch direto sem os comandos 30 e 31
+                                    
+    //Juntar as informações e atualizar o branch Master MERGED - MASTER
+(master)    33. $ git merge teste               // OBS, Deve estar na origin "MASTER" que quer alterar e trazer o branch de teste
+            34. $ git branch -d teste           // Deletar branch de teste
+            
+    // Criar Repositório servidor estação de trabalho servidor   
+            1. $ git init --bare
+            
+    // Estação de trabalho
+        1. $ git clone file:////nomedoservidor/projetos/cliente trocarnomedoprojeto   // nome da pasta no servidor trocar nome do projeto se quiser
+        2. $ git push origin master                 //Envie os arquivos para o servidor origin que estão no branch master, Enviar projeto da estação para o servidor
+
+        3. $ ssh-keygen                             // Interagir com a conta do GitHub, Senha em branco 
+        4. Selecionar o par de chaves id_rsa.pub.   //Abrir o arquivo e copiar a chave pública
+        5. Vá até o GITHUB WEB, clica em configuraçõe de conta -> SSH KEYS -> ADD SH KEY, Colocar a chave no GIT
+
+/* ======Adicionando Primeiro Projeto=========*/
+1- $ Abrir a pasta do Projeto
+2- $ git init                                      // Iniciar o git
+3- $ git add --all                                // add Tudo ou * ou .
+4- $ git commit -m "Primeiro Commit"
+5- $ git remote add origin https://github.com/Romuloti/teste
+6- $ git push -u origin master                    // Enviar os arquivo para a base Master on-line GITHUB
+7- $ git pull origin master                       // Atualizar os repositórios de teste com o repositório atualizado
+
+// (Fork) Utilizado para clocar dentro da conta do GITHUB depois faz um Pull Request para o Product Owner
+
+(Novo git repositório)
+echo "# teste" >> README.md              // Criar aquivo README.md           
+git init                                 // Inicia o repositório workdirectory
+git add README.md                        // Coloca o arquivo em stage area
+git commit -m "Primeiro commit"          // Envia os dados para o repositório
+git branch -M main                       // Cria uma branch 
+git remote add origin https://github.com/Romuloti/teste.git  //Add. um novo remoto ao repositório
+git push -u origin main                  // Envia o repositório para o dashboard no branch principal
+
+//Repositorio remoto
+git remote add origin https://github.com/Romuloti/teste.git
+git push -u origin main
+
+      # Mudar de branch
+      1. git checkout nome_da_branch
+
+      # Rastrear branches
+          2. git nome_da_brech -VV  
+
+      # Mostrar arquivos commitados
+              3. git log --name-status
+              4. git log --name-status nome_do_arquivo     // Mostrar commit especifico de um determinado arquivo
+              5. git shortlog
+
+
+
+
+
+
+
+
+        
+
+    
+        
+
+
+
+
+
+
