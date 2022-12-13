@@ -19,7 +19,7 @@
     4. Abre chamado solicitando publicação da branch criado
             5. git status
             6. git add .
-            7. git commit -m "Comentário"       7.1 gi commit -a -m "Comentário"  // Pula o git add .
+            7. git commit -m "Comentário"       7.1 git commit -a -m "Comentário"  // Pula o git add .
             8. git push origin master
             
 //====================<<<<<<<<    GITHUB   >>>>>>>>>>>=============  Branch = Ramo ou Filial / Primeiro criar Tag 0_0_1  
